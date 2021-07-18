@@ -1,0 +1,8 @@
+@import '../../sass/variables';
+
+.toggle-nav {
+  position: absolute;
+  top: calc((#{$header-height-mobile} - #{$bars-fontSize-mobile}) / 2);
+  left: 15px;
+  font-size: $bars-fontSize-mobile;
+}

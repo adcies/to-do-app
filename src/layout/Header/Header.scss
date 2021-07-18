@@ -3,6 +3,8 @@
 .header {
   height: $header-height-mobile;
   background-color: $header-bgColor;
+  position: fixed;
+  width: 100%;
   &__title {
     padding-right: 15px;
     text-align: right;
