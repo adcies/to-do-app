@@ -1,0 +1,15 @@
+@import '../../sass/variables';
+
+.header {
+  height: $header-height-mobile;
+  background-color: $header-bgColor;
+  &__title {
+    padding-right: 15px;
+    text-align: right;
+    line-height: $header-height-mobile;
+    font-size: $header-fontSize-mobile;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+  }
+}
