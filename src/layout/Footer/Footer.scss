@@ -1,0 +1,13 @@
+@import '../../sass/variables';
+
+.footer {
+  height: $footer-height-mobile;
+  background-color: gray;
+  &__author-info {
+    line-height: $footer-height-mobile;
+    text-align: center;
+    font-family: sans-serif;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+}
