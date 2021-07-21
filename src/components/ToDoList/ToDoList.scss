@@ -1,0 +1,16 @@
+@import '../../sass/variables';
+
+.todo-container {
+  margin: 50px auto 30px;
+  width: 85%;
+  box-shadow: 0 0 7px 0 black;
+  &__info {
+    line-height: 20px;
+    text-transform: uppercase;
+    font-size: $todo-title-fontSize;
+    text-align: center;
+    font-weight: bold;
+    background-color: $todo-title-bgColor;
+    padding: 5px;
+  }
+}

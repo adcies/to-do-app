@@ -2,11 +2,11 @@
 
 .main-form {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 70px;
   &__input {
     margin-right: 10px;
     line-height: 25px;
-    width: 200px;
+    width: 55%;
   }
   &__submit {
     height: 28.5px;
@@ -16,7 +16,6 @@
     border-radius: 3px;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: sans-serif;
     &:active {
       background-color: black;
       color: white;
@@ -25,7 +24,6 @@
   &__validation-info {
     color: $validation-message-error-color;
     margin-top: 10px;
-    font-family: sans-serif;
     font-size: $validation-message-error-fontSize;
   }
 }

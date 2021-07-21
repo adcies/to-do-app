@@ -1,7 +1,7 @@
 @import './sass/variables';
 @import './sass/reset';
 
-body {
-  font-family: sans-serif;
+:root {
   font-size: $base-fontSize;
+  font-family: sans-serif;
 }

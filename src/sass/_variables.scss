@@ -4,12 +4,12 @@ $base-fontSize: 10px;
 
 $header-height-mobile: 60px;
 $header-bgColor: lightblue;
-$header-fontSize-mobile: 1.4rem;
+$header-fontSize-mobile: 2rem;
 
 //Navigation
 
-$bars-fontSize-mobile: 1.8rem;
-$nav-fontSize-mobile: 1.4rem;
+$bars-fontSize-mobile: 2.8rem;
+$nav-fontSize-mobile: 2.4rem;
 
 //Footer
 
@@ -17,8 +17,12 @@ $footer-height-mobile: 50px;
 $footer-bgColor: #aaa;
 
 //Form
-$validation-message-error-fontSize: 1.1rem;
+$validation-message-error-fontSize: 1.5rem;
 $validation-message-error-color: red;
+
+//Todo container
+$todo-title-bgColor: #ccc;
+$todo-title-fontSize: 1.15rem;
 
 //Media
 $breakpoints: (
