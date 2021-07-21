@@ -2,7 +2,7 @@
 
 .footer {
   height: $footer-height-mobile;
-  background-color: gray;
+  background-color: $footer-bgColor;
   &__author-info {
     line-height: $footer-height-mobile;
     text-align: center;
