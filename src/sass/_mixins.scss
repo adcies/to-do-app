@@ -1,0 +1,12 @@
+@import './variables';
+
+@mixin mq($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @if ($size) {
+    @media (#{$size}) {
+      @content;
+    }
+  } @else {
+    @error '"#{breakpoint}" - does not exist';
+  }
+}
