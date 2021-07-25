@@ -5,7 +5,7 @@
   height: calc(100vh - #{$header-height-mobile});
   position: absolute;
   top: 100%;
-  left: -100%;
+  left: -110%;
   background-color: black;
   width: 100vw;
   @include mq(tablet-large) {
@@ -13,11 +13,9 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    position: absolute;
     background-color: transparent;
-    width: 820px;
+    width: $nav-width-tabletLarge;
   }
-
   &__list {
     position: absolute;
     top: 0;
@@ -36,7 +34,6 @@
       padding-top: 0;
       padding-bottom: 0;
       line-height: $header-height-mobile;
-      // color: black;
     }
   }
   &__element {
@@ -51,7 +48,7 @@
     color: white;
     &:hover {
       @include mq(tablet-large) {
-        background-color: rgb(144, 206, 226);
+        background-color: $navHover-bgC-tabletLarge;
       }
     }
     @include mq(tablet-large) {

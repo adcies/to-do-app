@@ -9,15 +9,15 @@ import './Navigation.scss';
 const Navigation = () => {
   const navigationRef = useRef(null);
 
-  const [isGreaterThan1024px, setIsGreaterThan1024px] = useState(true);
+  const [isGreaterThan1023px, setIsGreaterThan1023px] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1024) {
-        setIsGreaterThan1024px(true);
+      if (window.innerWidth > 1023) {
+        setIsGreaterThan1023px(true);
       } else {
-        setIsGreaterThan1024px(false);
+        setIsGreaterThan1023px(false);
       }
     };
     handleResize();
@@ -26,18 +26,18 @@ const Navigation = () => {
   }, []);
 
   useEffect(() => {
-    if (isGreaterThan1024px) {
+    if (isGreaterThan1023px) {
       const nav = navigationRef.current;
       nav.removeAttribute('style');
       setIsActive(false);
     }
-  }, [isGreaterThan1024px]);
+  }, [isGreaterThan1023px]);
 
   const handleToggleMenu = () => {
     const nav = navigationRef.current;
 
     if (isActive) {
-      gsap.to(nav, { duration: 0.3, ease: 'power1.out', left: '-100%' });
+      gsap.to(nav, { duration: 0.3, ease: 'power1.out', left: '-110%' });
     } else {
       gsap.to(nav, { duration: 0.3, ease: 'power1.out', left: '-18%' });
     }
@@ -54,7 +54,7 @@ const Navigation = () => {
           <li className="main-navigation__element">Example 4</li>
         </ul>
       </nav>
-      {isGreaterThan1024px ? null : (
+      {isGreaterThan1023px ? null : (
         <ToggleMainNav handleClick={handleToggleMenu} />
       )}
     </>

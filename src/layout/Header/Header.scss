@@ -6,6 +6,7 @@
   background-color: $header-bgColor;
   position: fixed;
   width: 100%;
+  z-index: 10;
   @include mq(tablet-large) {
     position: relative;
   }

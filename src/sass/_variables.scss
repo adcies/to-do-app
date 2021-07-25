@@ -10,6 +10,8 @@ $header-fontSize-mobile: 2rem;
 
 $bars-fontSize-mobile: 2.8rem;
 $nav-fontSize-mobile: 2.4rem;
+$nav-width-tabletLarge: 820px;
+$navHover-bgC-tabletLarge: rgb(144, 206, 226);
 
 //Footer
 
@@ -25,6 +27,17 @@ $label-fontSize: 1.2rem;
 $todo-title-bgColor: #ccc;
 $todo-title-fontSize: 1.15rem;
 
+//Task
+$task-height: 120px;
+$task-bgC: #efefef;
+$task-content-fontSize-mobile: 1.25rem;
+$task-content-fontSize-mobileLarge: 1.4rem;
+$task-date-info-fontSize-mobile: 1.2rem;
+$task-date-info-fontSize-mobileLarge: 1.3rem;
+$task-date-fontSize-mobile: 1.3rem;
+$task-date-fontSize-mobileLarge: 1.4rem;
+$task-btn-height: 25px;
+
 //Media
 $breakpoints: (
   smartphone: (
@@ -34,10 +47,10 @@ $breakpoints: (
     'min-width: 640px',
   ),
   tablet: (
-    'min-width: 800px',
+    'min-width: 768px',
   ),
   tablet-large: (
-    'min-width: 1025px',
+    'min-width: 1024px',
   ),
   desktop-small: (
     'min-width: 1280px',

@@ -49,6 +49,7 @@ const Form = () => {
         type="text"
         placeholder="Add your todo"
         name="task"
+        maxLength="50"
       />
       <input type="submit" className="main-form__submit" value="Add" />
       <br />
