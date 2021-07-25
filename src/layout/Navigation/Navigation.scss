@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .main-navigation {
   height: calc(100vh - #{$header-height-mobile});
@@ -7,10 +8,16 @@
   left: -100%;
   background-color: black;
   width: 100vw;
-  transition: 0.3s;
-  &--active {
-    left: -18%;
+  @include mq(tablet-large) {
+    height: $header-height-mobile;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: transparent;
+    width: 820px;
   }
+
   &__list {
     position: absolute;
     top: 0;
@@ -23,6 +30,14 @@
     justify-content: space-around;
     padding-top: 20px;
     padding-bottom: 20px;
+    @include mq(tablet-large) {
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 0;
+      line-height: $header-height-mobile;
+      // color: black;
+    }
   }
   &__element {
     text-align: right;
@@ -34,5 +49,16 @@
     height: 15%;
     font-size: $nav-fontSize-mobile;
     color: white;
+    &:hover {
+      @include mq(tablet-large) {
+        background-color: rgb(144, 206, 226);
+      }
+    }
+    @include mq(tablet-large) {
+      padding: 0 30px;
+      height: 100%;
+      color: black;
+      cursor: pointer;
+    }
   }
 }

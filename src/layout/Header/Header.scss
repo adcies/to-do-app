@@ -1,10 +1,14 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .header {
   height: $header-height-mobile;
   background-color: $header-bgColor;
   position: fixed;
   width: 100%;
+  @include mq(tablet-large) {
+    position: relative;
+  }
   &__title {
     padding-right: 15px;
     text-align: right;
@@ -13,5 +17,11 @@
     text-transform: uppercase;
     font-style: italic;
     font-weight: bold;
+    @include mq(tablet-large) {
+      position: absolute;
+      left: 40%;
+      top: $header-height-mobile;
+      margin-top: 15px;
+    }
   }
 }

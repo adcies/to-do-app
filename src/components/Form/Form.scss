@@ -1,8 +1,12 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .main-form {
   text-align: center;
   margin-top: 70px;
+  @include mq(tablet-large) {
+    margin-top: 30px;
+  }
   &__task-input {
     margin-right: 10px;
     margin-bottom: 10px;

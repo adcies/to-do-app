@@ -1,7 +1,23 @@
 @import './sass/variables';
 @import './sass/reset';
+@import './sass/mixins';
 
 :root {
   font-size: $base-fontSize;
   font-family: sans-serif;
+}
+
+body {
+  @include mq(tablet-large) {
+    background-color: #eee;
+  }
+}
+
+.App {
+  max-width: 1025px;
+  @include mq(tablet-large) {
+    margin: 0 auto;
+    box-shadow: 0 0 10px 0 black;
+    background-color: #fff;
+  }
 }
