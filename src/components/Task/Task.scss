@@ -19,6 +19,11 @@
       font-size: $task-content-fontSize-mobileLarge;
     }
   }
+  &__priority-mark {
+    display: inline-block;
+    color: red;
+    margin-right: 7px;
+  }
   &__date-info {
     font-size: $task-date-info-fontSize-mobile;
     font-style: italic;

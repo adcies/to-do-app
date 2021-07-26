@@ -2,18 +2,20 @@ import React from 'react';
 import { useState } from 'react';
 
 import { parseDateToInputFormat } from '../../helpers/dateParser';
+import createInitialInputValues from '../../helpers/initialInputValues';
+
+import { add } from '../../actions';
+
+import { useDispatch } from 'react-redux';
 
 import './Form.scss';
 
 const today = new Date().toLocaleDateString();
 const date = parseDateToInputFormat(today);
+const initialInputsValues = createInitialInputValues(date);
 
 const Form = () => {
-  const initialInputsValues = {
-    task: '',
-    date,
-    priority: false,
-  };
+  const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState(initialInputsValues);
 
@@ -31,6 +33,8 @@ const Form = () => {
     if (!inputs.task.trim()) {
       setIsValidationWrong(true);
     } else {
+      const taskData = inputs;
+      dispatch(add(taskData));
       setIsValidationWrong(false);
       setInputs(initialInputsValues);
     }
@@ -62,7 +66,7 @@ const Form = () => {
           name="date"
           value={inputs.date}
           onChange={handleOnChange}
-          min={today}
+          min={date}
         />
       </label>
       <br />

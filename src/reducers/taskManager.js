@@ -1,7 +1,7 @@
-const taskReducer = (state = '', action) => {
+const taskReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD':
-      return state;
+      return [...state, action.payload];
     case 'DELETE':
       return state;
     case 'EDIT':
