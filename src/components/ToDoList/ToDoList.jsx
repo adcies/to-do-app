@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import Task from '../Task/Task';
+import EditContainer from '../EditContainer/EditContainer';
 
 import { useSelector } from 'react-redux';
 
@@ -9,6 +10,7 @@ import './ToDoList.scss';
 
 const ToDoList = () => {
   const [showProrities, setShowProrities] = useState(false);
+  const edit = useSelector((state) => state.edit);
 
   const createTasksArray = () => {
     if (showProrities) {
@@ -31,22 +33,28 @@ const ToDoList = () => {
   };
 
   return (
-    <section className="todo-container">
-      <p className="todo-container__info">
-        5 newest todos will be below
-        <label className="todo-container__prorities-label" htmlFor="prorities">
-          Show prorities only
-          <input
-            className="todo-container__prorities-input"
-            id="prorities"
-            type="checkbox"
-            checked={showProrities}
-            onChange={handleOnChange}
-          />
-        </label>
-      </p>
-      <div className="todo-container__list-wrapper">{tasksElements}</div>
-    </section>
+    <>
+      {edit.isEditEnabled && <EditContainer />}
+      <section className="todo-container">
+        <p className="todo-container__info">
+          5 newest todos will be below
+          <label
+            className="todo-container__prorities-label"
+            htmlFor="prorities"
+          >
+            Show prorities only
+            <input
+              className="todo-container__prorities-input"
+              id="prorities"
+              type="checkbox"
+              checked={showProrities}
+              onChange={handleOnChange}
+            />
+          </label>
+        </p>
+        <div className="todo-container__list-wrapper">{tasksElements}</div>
+      </section>
+    </>
   );
 };
 

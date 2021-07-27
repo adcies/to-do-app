@@ -1,26 +1,30 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { parseDateToInputFormat } from '../../helpers/dateParser';
 import createInitialInputValues from '../../helpers/initialInputValues';
 
-import { add } from '../../actions';
+import { add, edit, disable } from '../../actions';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { v4 as uuidv4 } from 'uuid';
 
 import './Form.scss';
 
+import { parseDateToInputFormat } from '../../helpers/dateParser';
+
 const today = new Date().toLocaleDateString();
 const date = parseDateToInputFormat(today);
-const initialInputsValues = createInitialInputValues(date);
 
-const Form = () => {
+const Form = ({ isEditForm }) => {
+  const { isEditEnabled, id, taskData } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
 
-  const [inputs, setInputs] = useState(initialInputsValues);
+  const initialInputsValues = isEditEnabled
+    ? taskData
+    : createInitialInputValues(date);
 
+  const [inputs, setInputs] = useState(initialInputsValues);
   const [isValidationWrong, setIsValidationWrong] = useState(false);
 
   const handleOnChange = ({ target }) => {
@@ -32,14 +36,21 @@ const Form = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (!inputs.task.trim()) {
+
+    if (!inputs.task.trim() && (!isEditEnabled || isEditForm)) {
       setIsValidationWrong(true);
-    } else {
+    } else if (!isEditForm && !isEditEnabled) {
       const id = uuidv4();
       const taskData = { ...inputs, id };
       dispatch(add(taskData));
       setIsValidationWrong(false);
       setInputs(initialInputsValues);
+    } else if (isEditForm) {
+      const taskData = { ...inputs, id };
+      dispatch(edit(taskData));
+      setInputs(initialInputsValues);
+      setIsValidationWrong(false);
+      dispatch(disable());
     }
   };
 
@@ -49,6 +60,17 @@ const Form = () => {
 
   return (
     <form className="main-form" onSubmit={handleOnSubmit}>
+      {isEditForm ? (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(disable());
+          }}
+          className="main-form__btn main-form__close"
+        >
+          Close
+        </button>
+      ) : null}
       <input
         value={inputs.task}
         onChange={handleOnChange}
@@ -58,12 +80,19 @@ const Form = () => {
         name="task"
         maxLength="50"
       />
-      <input type="submit" className="main-form__submit" value="Add" />
+      <input
+        type="submit"
+        className="main-form__btn main-form__submit"
+        value={isEditForm ? 'Edit' : 'Add'}
+      />
       <br />
-      <label className="main-form__date-label" htmlFor="date">
+      <label
+        className="main-form__date-label"
+        htmlFor={isEditForm ? 'date-edit' : 'date'}
+      >
         To be done by:
         <input
-          id="date"
+          id={isEditForm ? 'date-edit' : 'date'}
           className="main-form__date"
           type="date"
           name="date"
@@ -73,12 +102,15 @@ const Form = () => {
         />
       </label>
       <br />
-      <label className="main-form__priority-label" htmlFor="priority">
+      <label
+        className="main-form__priority-label"
+        htmlFor={isEditForm ? 'priority-edit' : 'priority'}
+      >
         Priority
         <input
           className="main-form__priority"
           type="checkbox"
-          id="priority"
+          id={isEditForm ? 'priority-edit' : 'priority'}
           name="priority"
           onChange={handleOnChange}
           checked={inputs.priority}

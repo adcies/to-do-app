@@ -5,7 +5,11 @@ const taskReducer = (state = [], action) => {
     case 'DELETE':
       return state.filter((item) => item.id !== action.payload);
     case 'EDIT':
-      return state;
+      const { task, id, date, priority } = action.payload;
+      const tasks = [...state];
+      const itemIndex = tasks.findIndex((task) => task.id === id);
+      tasks[itemIndex] = { ...tasks[itemIndex], task, date, priority };
+      return tasks;
     default:
       return state;
   }
