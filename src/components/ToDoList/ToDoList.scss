@@ -13,4 +13,13 @@
     background-color: $todo-title-bgColor;
     padding: 5px;
   }
+  &__prorities-label {
+    display: block;
+    font-size: $prorities-label-fontSize;
+  }
+  &__prorities-input {
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
 }
