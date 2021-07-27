@@ -4,16 +4,13 @@ import Task from '../Task/Task';
 
 import { useSelector } from 'react-redux';
 
-import { v4 as uuidv4 } from 'uuid';
-
 import './ToDoList.scss';
 
 const ToDoList = () => {
   const tasks = useSelector((state) => state.tasks);
-  console.log(tasks);
   const fiveNewestTasks = [...tasks].reverse().slice(0, 5);
   const tasksElements = fiveNewestTasks.map((task) => (
-    <Task key={uuidv4()} taskData={task} />
+    <Task key={task.id} taskData={task} />
   ));
 
   return (

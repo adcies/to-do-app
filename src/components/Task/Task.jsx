@@ -3,10 +3,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
+import { useDispatch } from 'react-redux';
+
+import { remove } from '../../actions';
+
 import './Task.scss';
 
 const Task = ({ taskData }) => {
-  const { task, date, priority } = taskData;
+  const { task, date, priority, id } = taskData;
+  const dispatch = useDispatch();
 
   const priorityMark = priority ? (
     <span className="task__priority-mark">
@@ -27,7 +32,12 @@ const Task = ({ taskData }) => {
       <div className="task__btn-container">
         <div className="task__btn-wrapper">
           <button className="task__btn task__edit">Edit</button>
-          <button className="task__btn task__delete">Delete</button>
+          <button
+            className="task__btn task__delete"
+            onClick={() => dispatch(remove(id))}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

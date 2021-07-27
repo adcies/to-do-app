@@ -5,9 +5,10 @@ export const add = (payload) => {
   };
 };
 
-export const remove = () => {
+export const remove = (payload) => {
   return {
     type: 'DELETE',
+    payload,
   };
 };
 

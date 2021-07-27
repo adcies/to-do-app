@@ -3,7 +3,7 @@ const taskReducer = (state = [], action) => {
     case 'ADD':
       return [...state, action.payload];
     case 'DELETE':
-      return state;
+      return state.filter((item) => item.id !== action.payload);
     case 'EDIT':
       return state;
     default:

@@ -8,6 +8,8 @@ import { add } from '../../actions';
 
 import { useDispatch } from 'react-redux';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import './Form.scss';
 
 const today = new Date().toLocaleDateString();
@@ -33,7 +35,8 @@ const Form = () => {
     if (!inputs.task.trim()) {
       setIsValidationWrong(true);
     } else {
-      const taskData = inputs;
+      const id = uuidv4();
+      const taskData = { ...inputs, id };
       dispatch(add(taskData));
       setIsValidationWrong(false);
       setInputs(initialInputsValues);
