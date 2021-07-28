@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 import gsap from 'gsap';
 
 import ToggleMainNav from '../../components/ToggleMainNav/ToggleMainNav';
@@ -48,10 +51,43 @@ const Navigation = () => {
     <>
       <nav ref={navigationRef} className="main-navigation">
         <ul className="main-navigation__list">
-          <li className="main-navigation__element">Example 1</li>
-          <li className="main-navigation__element">Example 2</li>
-          <li className="main-navigation__element">Example 3</li>
-          <li className="main-navigation__element">Example 4</li>
+          <li className="main-navigation__element">
+            <NavLink
+              to="/"
+              exact
+              className="main-navigation__element-href"
+              activeClassName="main-navigation__element-href--active"
+            >
+              Start
+            </NavLink>
+          </li>
+          <li className="main-navigation__element">
+            <NavLink
+              to="/tasks"
+              className="main-navigation__element-href"
+              activeClassName="main-navigation__element-href--active"
+            >
+              All tasks
+            </NavLink>
+          </li>
+          <li className="main-navigation__element">
+            <NavLink
+              to="/unknown"
+              className="main-navigation__element-href"
+              activeClassName="main-navigation__element-href--active"
+            >
+              Start
+            </NavLink>
+          </li>
+          <li className="main-navigation__element">
+            <NavLink
+              to="/somethingelse"
+              className="main-navigation__element-href"
+              activeClassName="main-navigation__element-href--active"
+            >
+              Start
+            </NavLink>
+          </li>
         </ul>
       </nav>
       {isGreaterThan1023px ? null : (

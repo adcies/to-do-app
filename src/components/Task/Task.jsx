@@ -18,7 +18,7 @@ const Task = ({ taskData }) => {
     dispatch(disable());
     setTimeout(() => {
       dispatch(enable(taskData));
-    }, 100);
+    }, 0);
   };
 
   const handleDelete = () => {

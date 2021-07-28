@@ -40,22 +40,38 @@
     text-align: right;
     font-family: sans-serif;
     text-transform: uppercase;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 5px;
     height: 15%;
     font-size: $nav-fontSize-mobile;
-    color: white;
     &:hover {
       @include mq(tablet-large) {
         background-color: $navHover-bgC-tabletLarge;
       }
     }
     @include mq(tablet-large) {
-      padding: 0 30px;
+      padding: 0;
       height: 100%;
-      color: black;
       cursor: pointer;
+    }
+    &-href {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      color: white;
+      padding-right: 30px;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      text-decoration: none;
+      @include mq(tablet-large) {
+        padding: 0 30px;
+        color: black;
+      }
+      &--active {
+        color: orange;
+        @include mq(tablet-large) {
+          background-color: $navHover-bgC-tabletLarge;
+          color: white;
+        }
+      }
     }
   }
 }

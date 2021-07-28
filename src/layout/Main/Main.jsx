@@ -1,15 +1,19 @@
 import React from 'react';
 
-import Form from '../../components/Form/Form';
-import ToDoList from '../../components/ToDoList/ToDoList';
+import { Route, Switch } from 'react-router';
+
+import Start from '../../pages/Start/Start';
+import AllTasks from '../../pages/AllTasks/AllTasks';
 
 import './Main.scss';
 
 const Main = () => {
   return (
     <main className="main">
-      <Form />
-      <ToDoList />
+      <Switch>
+        <Route path="/" exact component={Start} />
+        <Route path="/tasks" component={AllTasks} />
+      </Switch>
     </main>
   );
 };
