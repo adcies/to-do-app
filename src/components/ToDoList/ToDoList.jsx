@@ -3,13 +3,15 @@ import { useState } from 'react';
 
 import SortSwitcher from '../SortSwitcher/SortSwitcher';
 import Task from '../Task/Task';
-import EditContainer from '../EditContainer/EditContainer';
+import Modal from '../Modal/Modal';
+import Form from '../Form/Form';
 
 import { useSelector } from 'react-redux';
 
 import './ToDoList.scss';
 
 const ToDoList = ({ isFullList }) => {
+  const [enableButtons, setEnableButtons] = useState(true);
   const [showProrities, setShowProrities] = useState(false);
   const [sortByNewest, setSortByNewest] = useState(true);
   const edit = useSelector((state) => state.edit);
@@ -40,6 +42,10 @@ const ToDoList = ({ isFullList }) => {
 
   const tasksElements = tasksToDisplay.map((task) => (
     <Task
+      enableBtn={enableButtons}
+      handleEnableBtn={(enable) => {
+        setEnableButtons(enable);
+      }}
       key={task.id}
       taskData={task}
       isFull={isFullList ? isFullList : null}
@@ -52,7 +58,11 @@ const ToDoList = ({ isFullList }) => {
 
   return (
     <>
-      {edit.isEditEnabled && <EditContainer />}
+      {edit.isEditEnabled && (
+        <Modal>
+          <Form isEditForm={true} />
+        </Modal>
+      )}
       <section className="todo-container">
         <div className="todo-container__info">
           {isFullList

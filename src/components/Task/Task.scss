@@ -34,9 +34,24 @@
       font-size: $task-date-info-fontSize-mobileLarge;
     }
   }
-  &__weather {
-    line-height: 6;
-    text-align: center;
+  &__open-weather {
+    height: 30px;
+    margin: 15px 0;
+    border: none;
+    box-shadow: 0 0 4px 0 black;
+    border-radius: 4px;
+    align-self: center;
+    background-color: white;
+    padding: 2px 4px;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      background-color: $weather-btn-hover-bgc;
+    }
+    &:active {
+      background-color: $weather-btn-active-bgc;
+      color: white;
+    }
   }
   &__date {
     font-weight: bold;
@@ -48,7 +63,7 @@
   &__btn-container {
     position: relative;
     flex-grow: 2;
-    padding-top: 10px;
+    padding-top: 15px;
   }
   &__btn-wrapper {
     position: absolute;

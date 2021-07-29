@@ -1,29 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import Modal from '../Modal/Modal';
+import Weather from '../Weather/Weather';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { remove, disable, enable } from '../../actions';
+import { remove, enable } from '../../actions';
 
 import './Task.scss';
+import { useEffect } from 'react';
 
-const Task = ({ taskData, isFull }) => {
+const Task = ({ taskData, isFull, enableBtn, handleEnableBtn }) => {
+  const [showWeather, setShowWeather] = useState(false);
   const { task, date, priority, id } = taskData;
   const { isEditEnabled } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    return () => {
+      handleHideWeather();
+    };
+    // eslint-disable-next-line
+  }, []);
+
   const handleEdit = () => {
-    dispatch(disable());
-    setTimeout(() => {
-      dispatch(enable(taskData));
-    }, 0);
+    dispatch(enable(taskData));
   };
 
   const handleDelete = () => {
-    if (!isEditEnabled) {
-      dispatch(remove(id));
+    dispatch(remove(id));
+  };
+
+  const handleShowWeather = () => {
+    if (!showWeather) {
+      handleEnableBtn(false);
+      setShowWeather(true);
+    }
+  };
+
+  const handleHideWeather = () => {
+    if (showWeather) {
+      handleEnableBtn(true);
+      setShowWeather(false);
     }
   };
 
@@ -39,17 +60,38 @@ const Task = ({ taskData, isFull }) => {
         {priorityMark}
         {task}
       </p>
-      {isFull ? <div className="task__weather">WEATHER</div> : null}
+      {isFull ? (
+        <button
+          disabled={!enableBtn || isEditEnabled}
+          className="task__open-weather"
+          onClick={handleShowWeather}
+        >
+          Check the weather!
+        </button>
+      ) : null}
+      {showWeather ? (
+        <Modal>
+          <Weather closeWeather={handleHideWeather} />
+        </Modal>
+      ) : null}
       <p className="task__date-info">
         To be done by:
         <span className="task__date">{` ${date}`}</span>
       </p>
       <div className="task__btn-container">
         <div className="task__btn-wrapper">
-          <button className="task__btn task__edit" onClick={handleEdit}>
+          <button
+            disabled={!enableBtn || isEditEnabled}
+            className="task__btn task__edit"
+            onClick={handleEdit}
+          >
             Edit
           </button>
-          <button className="task__btn task__delete" onClick={handleDelete}>
+          <button
+            disabled={!enableBtn || isEditEnabled}
+            className="task__btn task__delete"
+            onClick={handleDelete}
+          >
             Delete
           </button>
         </div>

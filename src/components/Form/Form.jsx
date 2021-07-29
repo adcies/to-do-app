@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import createInitialInputValues from '../../helpers/initialInputValues';
 
@@ -20,6 +20,13 @@ const Form = ({ isEditForm }) => {
   const { isEditEnabled, id, taskData } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    return () => {
+      dispatch(disable());
+    };
+    //eslint-disable-next-line
+  }, []);
+
   const initialInputsValues = isEditEnabled
     ? taskData
     : createInitialInputValues(date);
@@ -37,15 +44,15 @@ const Form = ({ isEditForm }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    if (!inputs.task.trim() && (!isEditEnabled || isEditForm)) {
+    if (!inputs.task.trim()) {
       setIsValidationWrong(true);
-    } else if (!isEditForm && !isEditEnabled) {
+    } else if (!isEditForm) {
       const id = uuidv4();
       const taskData = { ...inputs, id };
       dispatch(add(taskData));
       setIsValidationWrong(false);
       setInputs(initialInputsValues);
-    } else if (isEditForm) {
+    } else {
       const taskData = { ...inputs, id };
       dispatch(edit(taskData));
       setInputs(initialInputsValues);
@@ -81,6 +88,7 @@ const Form = ({ isEditForm }) => {
         maxLength="50"
       />
       <input
+        disabled={isEditEnabled && !isEditForm}
         type="submit"
         className="main-form__btn main-form__submit"
         value={isEditForm ? 'Edit' : 'Add'}
