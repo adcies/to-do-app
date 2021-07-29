@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
+import SortSwitcher from '../SortSwitcher/SortSwitcher';
 import Task from '../Task/Task';
 import EditContainer from '../EditContainer/EditContainer';
 
@@ -8,24 +9,41 @@ import { useSelector } from 'react-redux';
 
 import './ToDoList.scss';
 
-const ToDoList = () => {
+const ToDoList = ({ isFullList }) => {
   const [showProrities, setShowProrities] = useState(false);
+  const [sortByNewest, setSortByNewest] = useState(true);
   const edit = useSelector((state) => state.edit);
 
-  const createTasksArray = () => {
-    if (showProrities) {
-      return reversedTasks.filter((task) => task.priority).slice(0, 5);
+  const createTasksArray = (isFullList) => {
+    const tasksItems = showProrities
+      ? [...tasks].filter((task) => task.priority)
+      : [...tasks];
+    if (!isFullList) {
+      return tasksItems.reverse().slice(0, 5);
     }
-    return reversedTasks.slice(0, 5);
+
+    if (sortByNewest) {
+      return tasksItems.reverse();
+    }
+    const tasksByDate = tasksItems.sort((a, b) => {
+      if (new Date(a.date) - new Date(b.date) === 0) {
+        return -1; //newer tasks with the same date will be higher
+      }
+      return new Date(a.date) - new Date(b.date);
+    });
+    return tasksByDate;
   };
 
   const tasks = useSelector((state) => state.tasks);
-  const reversedTasks = [...tasks].reverse();
 
-  const fiveNewestTasks = createTasksArray();
+  const tasksToDisplay = createTasksArray(isFullList);
 
-  const tasksElements = fiveNewestTasks.map((task) => (
-    <Task key={task.id} taskData={task} />
+  const tasksElements = tasksToDisplay.map((task) => (
+    <Task
+      key={task.id}
+      taskData={task}
+      isFull={isFullList ? isFullList : null}
+    />
   ));
 
   const handleOnChange = () => {
@@ -36,8 +54,10 @@ const ToDoList = () => {
     <>
       {edit.isEditEnabled && <EditContainer />}
       <section className="todo-container">
-        <p className="todo-container__info">
-          5 newest todos will be below
+        <div className="todo-container__info">
+          {isFullList
+            ? 'All todos will be below'
+            : '5 newest todos will be below'}
           <label
             className="todo-container__prorities-label"
             htmlFor="prorities"
@@ -51,7 +71,16 @@ const ToDoList = () => {
               onChange={handleOnChange}
             />
           </label>
-        </p>
+          {isFullList ? (
+            <SortSwitcher
+              sortByNewest={sortByNewest}
+              handleOnChange={() => {
+                setSortByNewest((prevValue) => !prevValue);
+              }}
+            />
+          ) : null}
+        </div>
+
         <div className="todo-container__list-wrapper">{tasksElements}</div>
       </section>
     </>

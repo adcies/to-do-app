@@ -1,7 +1,13 @@
 import React from 'react';
 
+import ToDoList from '../../components/ToDoList/ToDoList';
+
 const CompleteList = () => {
-  return <div>eeeeeeeeeeeee</div>;
+  return (
+    <>
+      <ToDoList isFullList={true} />
+    </>
+  );
 };
 
 export default CompleteList;

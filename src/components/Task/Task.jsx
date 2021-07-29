@@ -9,7 +9,7 @@ import { remove, disable, enable } from '../../actions';
 
 import './Task.scss';
 
-const Task = ({ taskData }) => {
+const Task = ({ taskData, isFull }) => {
   const { task, date, priority, id } = taskData;
   const { isEditEnabled } = useSelector((state) => state.edit);
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ const Task = ({ taskData }) => {
         {priorityMark}
         {task}
       </p>
+      {isFull ? <div className="task__weather">WEATHER</div> : null}
       <p className="task__date-info">
         To be done by:
         <span className="task__date">{` ${date}`}</span>

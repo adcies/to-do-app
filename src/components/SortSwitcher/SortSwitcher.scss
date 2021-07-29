@@ -1,0 +1,21 @@
+.sort-switcher {
+  margin: 3px 0;
+  &__btn {
+    background-color: white;
+    border: 1px solid black;
+    width: 64px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    &:active {
+      background-color: gray;
+    }
+  }
+  &__info {
+    font-size: 1rem;
+  }
+}

@@ -2,7 +2,7 @@
 @import '../../sass/mixins';
 
 .task {
-  height: $task-height;
+  min-height: $task-height;
   border-top: 1px solid gray;
   background-color: $task-bgC;
   display: flex;
@@ -34,6 +34,10 @@
       font-size: $task-date-info-fontSize-mobileLarge;
     }
   }
+  &__weather {
+    line-height: 6;
+    text-align: center;
+  }
   &__date {
     font-weight: bold;
     font-size: $task-date-fontSize-mobile;
@@ -44,6 +48,7 @@
   &__btn-container {
     position: relative;
     flex-grow: 2;
+    padding-top: 10px;
   }
   &__btn-wrapper {
     position: absolute;
