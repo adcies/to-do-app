@@ -4,6 +4,25 @@
   margin: 50px auto 30px;
   width: 85%;
   box-shadow: 0 0 7px 0 black;
+  &__open-weather {
+    height: 30px;
+    margin: 15px 0;
+    border: none;
+    box-shadow: 0 0 4px 0 black;
+    border-radius: 4px;
+    align-self: center;
+    background-color: white;
+    padding: 2px 4px;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      background-color: $weather-btn-hover-bgc;
+    }
+    &:active {
+      background-color: $weather-btn-active-bgc;
+      color: white;
+    }
+  }
   &__info {
     line-height: 20px;
     text-transform: uppercase;
