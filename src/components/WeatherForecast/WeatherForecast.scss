@@ -1,0 +1,8 @@
+@import '../../sass/variables';
+
+.weather-forecast {
+  height: $weather-height;
+  &__data {
+    margin-top: 10px;
+  }
+}

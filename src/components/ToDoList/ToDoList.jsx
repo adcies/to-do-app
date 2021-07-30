@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
+import { ActiveButtonProvider } from '../../context/ActiveButtonContext';
+
 import SortSwitcher from '../SortSwitcher/SortSwitcher';
 import Task from '../Task/Task';
 import Modal from '../Modal/Modal';
@@ -80,7 +82,9 @@ const ToDoList = ({ isFullList }) => {
     <>
       {showWeather && (
         <Modal>
-          <Weather closeWeather={handleHideWeather} />
+          <ActiveButtonProvider>
+            <Weather closeWeather={handleHideWeather} />
+          </ActiveButtonProvider>
         </Modal>
       )}
       {isEditEnabled && (

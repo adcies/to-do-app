@@ -30,4 +30,19 @@
   &__data-container {
     margin-top: 7px;
   }
+  &__submit {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid black;
+    // height: 20px;
+    margin-left: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
 }
