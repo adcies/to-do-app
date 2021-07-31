@@ -2,13 +2,12 @@
 
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 9;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   min-width: 300px;
-  padding-bottom: 20px;
   border: 2px solid black;
   @include mq(smartphone-large) {
     min-width: 500px;

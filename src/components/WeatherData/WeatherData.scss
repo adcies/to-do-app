@@ -1,0 +1,9 @@
+@import '../../sass/variables';
+
+.weather-data {
+  &__error {
+    font-size: $weather-error-fontSize;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+}

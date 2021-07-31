@@ -10,7 +10,9 @@ const currentDate = new Date().toLocaleDateString();
 const Weather = ({ closeWeather }) => {
   const { active } = useContext(ActiveButtonContext);
 
+  const [isValidationWrong, setIsValidationWrong] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [cityNameToFetch, setCityNameToFetch] = useState('');
   const [showWeatherForecastComponent, setShowWeatherForecastComponent] =
     useState(false);
 
@@ -20,10 +22,17 @@ const Weather = ({ closeWeather }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    setShowWeatherForecastComponent(false);
-    setTimeout(() => {
-      setShowWeatherForecastComponent(true);
-    }, 0);
+    if (!inputValue.trim()) {
+      setIsValidationWrong(true);
+    } else {
+      const cityName = inputValue.trim();
+      setCityNameToFetch(cityName);
+      setShowWeatherForecastComponent(false);
+      setTimeout(() => {
+        setShowWeatherForecastComponent(true);
+      }, 0);
+      setIsValidationWrong(false);
+    }
     setInputValue('');
   };
 
@@ -52,8 +61,15 @@ const Weather = ({ closeWeather }) => {
               value="Confirm"
               disabled={!active}
             />
+            {isValidationWrong ? (
+              <p className="weather__wrong-validation">
+                Input cannot be empty!
+              </p>
+            ) : null}
           </form>
-          {showWeatherForecastComponent && <WeatherForecast />}
+          {showWeatherForecastComponent && (
+            <WeatherForecast city={cityNameToFetch} />
+          )}
         </div>
       </div>
     </div>

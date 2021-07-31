@@ -1,7 +1,11 @@
+@import '../../sass/variables';
+
 .weather {
   position: relative;
-  height: 200px;
-  font-size: 1.4rem;
+  height: $weather-height;
+  font-size: $weather-fontSize;
+  background-color: $weather-bgc;
+  // padding-bottom: 20px;
   &__close {
     position: absolute;
     top: 0;
@@ -22,9 +26,13 @@
     padding-top: 35px;
     text-align: center;
   }
+  &__city {
+    border: 1px solid black;
+    padding: 2px;
+  }
   &__date {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: $weather-date-fontSize;
     font-style: italic;
   }
   &__data-container {
@@ -34,7 +42,6 @@
     display: inline-block;
     background-color: #fff;
     border: 1px solid black;
-    // height: 20px;
     margin-left: 10px;
     padding: 2px 5px;
     cursor: pointer;
@@ -44,5 +51,10 @@
       background-color: black;
       color: white;
     }
+  }
+  &__wrong-validation {
+    color: $validation-message-error-color;
+    margin-top: 10px;
+    font-size: $validation-message-error-fontSize;
   }
 }

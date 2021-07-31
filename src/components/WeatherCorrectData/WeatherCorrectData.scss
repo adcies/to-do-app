@@ -1,0 +1,13 @@
+@import '../../sass/variables';
+
+.weather-correct {
+  margin-top: 15px;
+  line-height: 1.5;
+  &__value {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  &__img {
+    height: $weather-icon-height;
+  }
+}
