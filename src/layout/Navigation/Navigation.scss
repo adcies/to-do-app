@@ -25,14 +25,11 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding-top: 100px;
-    padding-bottom: 400px;
+    padding-top: 80px;
     @include mq(tablet-large) {
       flex-direction: row;
       justify-content: center;
       padding-top: 0;
-      padding-bottom: 0;
       line-height: $header-height-mobile;
     }
   }
@@ -42,13 +39,14 @@
     text-transform: uppercase;
     height: 15%;
     font-size: $nav-fontSize-mobile;
+    margin-bottom: 25px;
     &:hover {
       @include mq(tablet-large) {
         background-color: $navHover-bgC-tabletLarge;
       }
     }
     @include mq(tablet-large) {
-      padding: 0;
+      margin-bottom: 0;
       height: 100%;
       cursor: pointer;
     }
