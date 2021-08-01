@@ -68,15 +68,15 @@ const Form = ({ isEditForm }) => {
   return (
     <form className="main-form" onSubmit={handleOnSubmit}>
       {isEditForm ? (
-        <button
+        <input
+          type="button"
+          value="Close"
           onClick={(e) => {
             e.preventDefault();
             dispatch(disable());
           }}
           className="main-form__btn main-form__close"
-        >
-          Close
-        </button>
+        />
       ) : null}
       <input
         value={inputs.task}
