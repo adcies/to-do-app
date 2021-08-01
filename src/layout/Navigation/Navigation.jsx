@@ -47,12 +47,19 @@ const Navigation = () => {
     setIsActive((prevValue) => !prevValue);
   };
 
+  const handleClickLink = () => {
+    if (!isGreaterThan1023px) {
+      handleToggleMenu();
+    }
+  };
+
   return (
     <>
       <nav ref={navigationRef} className="main-navigation">
         <ul className="main-navigation__list">
           <li className="main-navigation__element">
             <NavLink
+              onClick={handleClickLink}
               to="/"
               exact
               className="main-navigation__element-href"
@@ -63,29 +70,12 @@ const Navigation = () => {
           </li>
           <li className="main-navigation__element">
             <NavLink
+              onClick={handleClickLink}
               to="/tasks"
               className="main-navigation__element-href"
               activeClassName="main-navigation__element-href--active"
             >
               All tasks
-            </NavLink>
-          </li>
-          <li className="main-navigation__element">
-            <NavLink
-              to="/unknown"
-              className="main-navigation__element-href"
-              activeClassName="main-navigation__element-href--active"
-            >
-              Start
-            </NavLink>
-          </li>
-          <li className="main-navigation__element">
-            <NavLink
-              to="/somethingelse"
-              className="main-navigation__element-href"
-              activeClassName="main-navigation__element-href--active"
-            >
-              Start
             </NavLink>
           </li>
         </ul>

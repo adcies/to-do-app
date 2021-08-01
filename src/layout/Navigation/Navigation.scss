@@ -25,9 +25,9 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    justify-content: space-between;
+    padding-top: 100px;
+    padding-bottom: 400px;
     @include mq(tablet-large) {
       flex-direction: row;
       justify-content: center;
