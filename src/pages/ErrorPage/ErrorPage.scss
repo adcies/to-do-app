@@ -1,0 +1,17 @@
+@import '../../sass/variables';
+
+.error-page {
+  text-align: center;
+  margin-top: 50px;
+  font-size: $errorPage-fontSize;
+  line-height: 2;
+  &__redirect-info {
+    font-style: italic;
+  }
+  &__redirect-link {
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    color: $errorPage-link-color;
+  }
+}

@@ -65,7 +65,7 @@ const Navigation = () => {
               className="main-navigation__element-href"
               activeClassName="main-navigation__element-href--active"
             >
-              Start
+              Home
             </NavLink>
           </li>
           <li className="main-navigation__element">
