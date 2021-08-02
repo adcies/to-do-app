@@ -3,16 +3,16 @@
 .weather {
   position: relative;
   height: $weather-height;
-  font-size: $weather-fontSize;
   background-color: $weather-bgc;
+  font-size: $weather-fontSize;
   &__close {
     position: absolute;
     top: 0;
     right: 0;
+    border: 1px solid black;
     width: 60px;
     height: 25px;
     background-color: white;
-    border: 1px solid black;
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
@@ -26,34 +26,33 @@
     text-align: center;
   }
   &__city {
-    border: 1px solid black;
     padding: 2px;
+    border: 1px solid black;
   }
   &__date {
-    font-weight: bold;
     font-size: $weather-date-fontSize;
+    font-weight: bold;
     font-style: italic;
   }
   &__data-container {
     margin-top: 7px;
   }
   &__submit {
-    display: inline-block;
-    background-color: #fff;
-    border: 1px solid black;
     margin-left: 10px;
     padding: 2px 5px;
-    cursor: pointer;
+    border: 1px solid black;
+    background-color: #fff;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
     &:hover {
       background-color: black;
       color: white;
     }
   }
   &__wrong-validation {
-    color: $validation-message-error-color;
     margin-top: 10px;
+    color: $validation-message-error-color;
     font-size: $validation-message-error-fontSize;
   }
 }

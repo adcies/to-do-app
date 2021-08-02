@@ -2,8 +2,8 @@
 
 .weather-data {
   &__error {
+    padding-top: 50px;
     font-size: $weather-error-fontSize;
     font-weight: bold;
-    padding-top: 50px;
   }
 }

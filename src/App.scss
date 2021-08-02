@@ -14,7 +14,7 @@ body {
 }
 
 .App {
-  max-width: 1025px;
+  max-width: $app-max-width;
   @include mq(tablet-large) {
     margin: 0 auto;
     box-shadow: 0 0 10px 0 black;

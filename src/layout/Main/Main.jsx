@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router';
 
-import Start from '../../pages/Start/Start';
+import Home from '../../pages/Home/Home';
 import AllTasks from '../../pages/AllTasks/AllTasks';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 
@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <main className="main">
       <Switch>
-        <Route path="/" exact component={Start} />
+        <Route path="/" exact component={Home} />
         <Route path="/tasks" exact component={AllTasks} />
         <Route component={ErrorPage} />
       </Switch>

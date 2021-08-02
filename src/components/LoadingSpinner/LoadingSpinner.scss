@@ -9,12 +9,12 @@
     position: absolute;
     top: 32%;
     left: 50%;
-    transform: translateX(-50%);
     height: 70px;
     width: 70px;
     border: 10px solid $spinner-main-color;
     border-top-color: $spinner-second-color;
     border-radius: 50%;
+    transform: translateX(-50%);
     animation: spinner infinite 0.7s linear;
   }
 }

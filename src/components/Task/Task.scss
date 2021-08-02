@@ -2,33 +2,35 @@
 @import '../../sass/mixins';
 
 .task {
+  display: flex;
+  flex-direction: column;
   min-height: $task-height;
   border-top: 1px solid gray;
   background-color: $task-bgC;
-  display: flex;
-  flex-direction: column;
+
   &__content {
-    font-weight: bold;
-    font-size: $task-content-fontSize-mobile;
+    flex-grow: 3;
     padding: 15px 5px 5px;
+    font-size: $task-content-fontSize-mobile;
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     line-height: 1.3;
-    flex-grow: 3;
+
     @include mq(smartphone-large) {
       font-size: $task-content-fontSize-mobileLarge;
     }
   }
   &__priority-mark {
     display: inline-block;
-    color: red;
     margin-right: 7px;
+    color: red;
   }
   &__date-info {
-    font-size: $task-date-info-fontSize-mobile;
-    font-style: italic;
     flex-grow: 2;
     padding-bottom: 30px;
+    font-size: $task-date-info-fontSize-mobile;
+    font-style: italic;
     text-align: center;
     @include mq(smartphone-large) {
       font-size: $task-date-info-fontSize-mobileLarge;
@@ -36,15 +38,15 @@
   }
 
   &__date {
-    font-weight: bold;
     font-size: $task-date-fontSize-mobile;
+    font-weight: bold;
     @include mq(smartphone-large) {
       font-size: $task-date-fontSize-mobileLarge;
     }
   }
   &__btn-container {
-    position: relative;
     flex-grow: 2;
+    position: relative;
     padding-top: 15px;
   }
   &__btn-wrapper {
@@ -54,9 +56,9 @@
   }
   &__btn {
     position: relative;
-    height: $task-btn-height;
     padding: 5px 10px;
     border: 1px solid black;
+    height: $task-btn-height;
     background-color: white;
     text-transform: uppercase;
     cursor: pointer;

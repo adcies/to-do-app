@@ -5,7 +5,6 @@
   padding-top: $header-height-mobile;
   min-height: calc(100vh - #{$footer-height-mobile});
   @include mq(tablet-large) {
-    // padding-top: 0;
     min-height: calc(100vh - #{$footer-height-mobile + $header-height-mobile});
   }
 }

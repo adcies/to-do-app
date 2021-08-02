@@ -6,7 +6,7 @@ import { disable } from '../../actions';
 import Form from '../../components/Form/Form';
 import ToDoList from '../../components/ToDoList/ToDoList';
 
-const Start = () => {
+const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {
@@ -23,4 +23,4 @@ const Start = () => {
   );
 };
 
-export default Start;
+export default Home;
