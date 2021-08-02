@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# To-do application with weather
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application was created with various technologies (like Redux, Context, React-Router, Create-React-App, SASS, GSAP).
+Weather API is provided from OpenWeatherMap as a free API.
+
+## App features
+
+*Note that App is not connected to any database and no backend is used. The app and data will be the default each time you connect
+
+### Adding new tasks with following details: to-be-done date, priority
+### Editing existing tasks
+### Deleting existing tasks
+### Sorting tasks by either date or newest
+### Checking current weather
+
+## App description
+
+App consists of two pages: Home and All Tasks
+At first page you can add your task. 5 newest tasks will be displayed (with edit and delete possibilities).
+Second page provides weather feature and shows all the existing tasks (with edit, delete, and sort possibilities).
+At both pages you can hide no-priority tasks.
+
+Weather feature uses free API.
+All you have to do is to type your city name in order to see a weather details.
+
+## Create-React-App
 
 ## Available Scripts
 
