@@ -5,6 +5,18 @@
   height: $weather-height;
   background-color: $weather-bgc;
   font-size: $weather-fontSize;
+  &__data-provider {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    font-style: italic;
+    text-align: center;
+    &-info {
+      font-weight: bold;
+    }
+  }
   &__close {
     position: absolute;
     top: 0;

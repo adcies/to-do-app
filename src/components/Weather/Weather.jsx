@@ -38,6 +38,10 @@ const Weather = ({ closeWeather }) => {
 
   return (
     <div className="weather">
+      <p className="weather__data-provider">
+        Weather data provider:{' '}
+        <span className="weather__data-provider-info">OpenWeather (TM)</span>
+      </p>
       <button onClick={closeWeather} className="weather__close">
         Close
       </button>
